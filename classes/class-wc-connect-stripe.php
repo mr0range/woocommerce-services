@@ -163,6 +163,9 @@ if ( ! class_exists( 'WC_Connect_Stripe' ) ) {
 			return $result;
 		}
 
+		/**
+		 * Trigger Stripe connection-related admin notice if one is meant to be shown.
+		 */
 		public function maybe_show_notice() {
 			$setting = WC_Connect_Options::get_option( 'banner_stripe', null );
 			if ( is_null( $setting ) ) {
@@ -204,6 +207,9 @@ if ( ! class_exists( 'WC_Connect_Stripe' ) ) {
 			}
 		}
 
+		/**
+		 * Render dismissible connection banner with OAuth link as primary action.
+		 */
 		public function connection_banner() {
 			$result = $this->get_oauth_url( admin_url( 'admin.php?page=wc-settings&tab=checkout&section=stripe' ) );
 
@@ -224,6 +230,9 @@ if ( ! class_exists( 'WC_Connect_Stripe' ) ) {
 			) );
 		}
 
+		/**
+		 * Render admin notice acknowledging successful OAuth connection.
+		 */
 		public function connection_success_notice() {
 			?>
 				<div class="notice notice-success">
